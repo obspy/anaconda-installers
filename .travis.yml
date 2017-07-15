@@ -1,0 +1,74 @@
+language: c
+
+env:
+  global:
+    - OBSPY_VERSION=1.0.3
+    - PYTHON_VERSION=3.6
+
+sudo: false
+
+matrix:
+  include:
+    - os: linux
+      env: CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py27
+    - os: linux
+      env: CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py27 ARCHITECTURE_32BIT="True"
+      addons:
+        apt:
+          packages:
+            # https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
+            - libstdc++6:i386
+            - gcc-multilib
+    - os: osx
+      env: CONDA_PLATFORM=osx-64 CONDA_PYSUFFIX=py27
+
+install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      export OS="MacOSX";
+    else
+      export OS="Linux";
+    fi
+  - |
+      if [[ "$ARCHITECTURE_32BIT" == "True" ]]; then
+        export ARCH=""
+      else
+        export ARCH="_64"
+      fi
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-${OS}-x86${ARCH}.sh -O miniconda.sh;
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  # Useful for debugging any issues with conda
+  - conda info -a
+  # Install constructor
+  - conda install -q --yes constructor
+  # list package versions
+  - conda list
+  # build installer
+  - constructor --verbose --platform=${CONDA_PLATFORM} ${OBSPY_VERSION}_${CONDA_PYSUFFIX}
+
+script:
+  # We change directories to make sure that python won't find the copy
+  # of obspy in the source directory, see
+  # https://github.com/numpy/numpy/blob/master/.travis.yml#L44
+  - ls -la ObsPy*.sh
+  - mkdir empty
+  - cd empty
+  - bash ../ObsPy*.sh -b -p $HOME/obspy-anaconda
+  - $HOME/obspy-anaconda/bin/python -m obspy.scripts.runtests --no-flake8 -n anaconda-installers -r
+  - cd ..
+
+notifications:
+    email: false
+
+deploy:
+  provider: releases
+  api_key:
+    secure: "XhxZIekSlA1ACmnpWbBqggYq01RM9CrsL1JJVHHCLB5Uh7+yH8xHu3wbLzO5p49ohUnTD/bKBOQRdXIczZvVbpVMgby84MVKvmaDDyCi5yuaKnwEGHU+E/xOOgRArCeQobaSwgtLeDbgaoIW+7ORxHsoyfdUDHELo+OSNH2lyJtrtJuCy4ZJ3gDokxmbu92Q9nDSWEJfyX78hFxYRXdm/7SPpXLp9R0vmUX/U4NlaIwi1Al0OhLnSyNQCT7aIJ2VoInYF9pWdeSg/rlcuzp7EzL8gw9sfNLDBEfwZK27LpsUk1L8506k0VanF3+U39C2ut0/MO3881oABtp505iN4iYefDiSdhPdlmkGSfns0ny9lvWlVwCf4aZWHZfqkDUnRClPgH1QiAuSPTa5HuIvfHxAlanjZ7YxNcEqn5KEkPaPz397Br82UHHF+5kJs7deRL29p4fyaFs3zYF0BORB2fUPi03keEROSGNcIaztvIp1eLpQn5EiQEtc9Cln1jolMxk0gKHqs+InDYzY5Nu/4CeLqp0xioGMQXEMoiw0E8yAmWCuoc+80UXb9zJ7NitpYrtyJ52Wj2aHaduBQzBQNVH1pPCEdJzqoGPXCktJ6DysoO5Iuh7EJjoDLTq5HlnIi9H5gePwKCFCCVidHUBEQuQGf0QymY2BPFRtFwNJruM="
+  file_glob: true
+  file: "ObsPy*.sh"
+  skip_cleanup: true
+  on:
+    tags: true
