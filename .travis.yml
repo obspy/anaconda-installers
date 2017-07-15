@@ -46,6 +46,9 @@ install:
   - conda install -q --yes constructor
   # list package versions
   - conda list
+  # try to fix build problems on osx by adding conda-forge channel with top priority
+  - conda config --add channels conda-forge
+  - conda config --add channels conda-forge
   # build installer
   - constructor --verbose --platform=${CONDA_PLATFORM} ${OBSPY_VERSION}_${CONDA_PYSUFFIX}
 
