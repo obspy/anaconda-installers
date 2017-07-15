@@ -68,7 +68,7 @@ test_script:
   - "start /wait \"\" %file_name% /InstallationType=JustMe /RegisterPython=0 /AddToPath=1 /S /D=C:\\ObsPy-Anaconda"
   # instructions for silent installation of Anaconda installer: https://conda.io/docs/help/silent.html
   # - "start /wait \"\" ObsPy*.exe /InstallationType=JustMe /RegisterPython=0 /AddToPath=1 /S /D=%UserProfile%\\ObsPy-Anaconda"
-  - "python -m obspy.scripts.runtests --no-flake8 -n anaconda-installers -r"
+  - "C:\\ObsPy-Anaconda\\python -m obspy.scripts.runtests --no-flake8 -n anaconda-installers -r"
 
 on_success:
   - ps: "ls ObsPy*.exe"
