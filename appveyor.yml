@@ -43,11 +43,10 @@ install:
   # list package versions
   - "conda list"
   # build installer
-  - "make win64"
+  - "constructor --platform=win-64 1.0.3_py27"
 
 # Not a .NET project, we build ObsPy in the install step instead
 build: false
-  - "make win64"
 
 test_script:
   - ps: "ls *"
