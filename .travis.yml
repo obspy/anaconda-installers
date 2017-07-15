@@ -12,7 +12,7 @@ matrix:
     - os: linux
       env: CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py27
     - os: linux
-      env: CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py27 ARCHITECTURE_32BIT="True"
+      env: CONDA_PLATFORM=linux-32 CONDA_PYSUFFIX=py27 ARCHITECTURE_32BIT="True"
       addons:
         apt:
           packages:
