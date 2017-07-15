@@ -67,6 +67,8 @@ test_script:
   - "echo %file_name%"
   # instructions for silent installation of Anaconda installer: https://conda.io/docs/help/silent.html
   - "start /wait \"\" %file_name% /InstallationType=JustMe /RegisterPython=0 /AddToPath=1 /S /D=C:\\ObsPy-Anaconda"
+  # XXX - "C:\\ObsPy-Anaconda\\python -m obspy.scripts.runtests --no-flake8 -n anaconda-installers -r"
+  # XXX for now only test core, to get passing tests, should be reverted!
   - "C:\\ObsPy-Anaconda\\python -m obspy.scripts.runtests --no-flake8 -n anaconda-installers -r"
 
 on_success:
