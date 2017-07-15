@@ -10,6 +10,7 @@ environment:
     # See: http://stackoverflow.com/a/13751649/163740
     CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\misc\\appveyor\\run_with_env.cmd"
     OBSPY_VERSION: "1.0.3"
+    PYTHON_VERSION: "3.6"
 
   matrix:
     # Pre-installed Python versions, which Appveyor may upgrade to
@@ -17,13 +18,11 @@ environment:
     # See: http://www.appveyor.com/docs/installed-software#python
 
     - PYTHON: "C:\\Miniconda36-x64"
-      PYTHON_VERSION: "3.6"
       PYTHON_ARCH: "64"
       CONDA_PLATFORM: "win-64"
       CONDA_PYSUFFIX: "py27"
 
     - PYTHON: "C:\\Miniconda36"
-      PYTHON_VERSION: "3.6"
       PYTHON_ARCH: "32"
       CONDA_PLATFORM: "win-32"
       CONDA_PYSUFFIX: "py27"
@@ -34,9 +33,9 @@ platform:
 
 matrix:
   exclude:
-    - platform: 64
+    - platform: x64
       PYTHON_ARCH: "32"
-    - platform: 32
+    - platform: x86
       PYTHON_ARCH: "64"
 
 install:
