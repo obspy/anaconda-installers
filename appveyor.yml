@@ -42,11 +42,11 @@ install:
   - "conda install -q --yes constructor"
   # list package versions
   - "conda list"
-
-build:
+  # build installer
   - "make win64"
 
-build_script:
+# Not a .NET project, we build ObsPy in the install step instead
+build: false
   - "make win64"
 
 test_script:
