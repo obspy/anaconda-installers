@@ -32,6 +32,8 @@ platform:
   - x86
 
 matrix:
+  # we have two dimensions in the matrix, platform (64/32bit) and the corresponding env settings for 64/32bit
+  # of course we only want to build 64/64bit and 32/32bit combination..
   exclude:
     - platform: x64
       PYTHON_ARCH: "32"
@@ -61,6 +63,8 @@ build: false
 
 test_script:
   - ps: "ls ObsPy*.exe"
+  - "start /wait "" ObsPy*.exe /InstallationType=JustMe /RegisterPython=0 /AddToPath=1 /S /D=%UserProfile%\ObsPy-Anaconda"
+  - "obspy-runtests"
 
 on_success:
   - ps: "ls ObsPy*.exe"
