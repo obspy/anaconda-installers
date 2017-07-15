@@ -53,6 +53,8 @@ install:
   - "conda install -q --yes constructor"
   # list package versions
   - "conda list"
+  # patch constructor's makensis call to maximum verbosity, see conda/constructor#94
+  - "python patch_makensis_verbosity.py"
   # build installer
   - "constructor --verbose --platform=%CONDA_PLATFORM% %OBSPY_VERSION%_%CONDA_PYSUFFIX%"
 
