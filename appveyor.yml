@@ -63,10 +63,11 @@ build: false
 
 test_script:
   - ps: "ls ObsPy*.exe"
-  # - for %%# in (*.txt) do set "file_name=%%~nx#"
-  # - "start /wait %file_name% /InstallationType=JustMe /RegisterPython=0 /AddToPath=1 /S /D=%UserProfile%\ObsPy-Anaconda"
-  - "start /wait \"\" ObsPy*.exe /InstallationType=JustMe /RegisterPython=0 /AddToPath=1 /S /D=%UserProfile%\\ObsPy-Anaconda"
-  - "obspy-runtests"
+  - for %%# in (*.txt) do set "file_name=%%~nx#"
+  - "start /wait %file_name% /InstallationType=JustMe /RegisterPython=0 /AddToPath=1 /S /D=C:\\ObsPy-Anaconda"
+  # instructions for silent installation of Anaconda installer: https://conda.io/docs/help/silent.html
+  # - "start /wait \"\" ObsPy*.exe /InstallationType=JustMe /RegisterPython=0 /AddToPath=1 /S /D=%UserProfile%\\ObsPy-Anaconda"
+  - "C:\\ObsPy-Anaconda\\bin\\obspy-runtests"
 
 on_success:
   - ps: "ls ObsPy*.exe"
