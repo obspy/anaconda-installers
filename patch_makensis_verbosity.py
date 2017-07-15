@@ -14,9 +14,9 @@ for line in fileinput.input(file_to_patch, inplace=True):
         print('    sub = Popen(args, stdout=PIPE, stderr=PIPE)', end=os.linesep)
         print('    stdout, stderr = sub.communicate()', end=os.linesep)
         print('    print("makensis stdout:")', end=os.linesep)
-        print('    print(stdout)', end=os.linesep)
+        print('    print(stdout.decode())', end=os.linesep)
         print('    print("makensis stderr:")', end=os.linesep)
-        print('    print(stderr)', end=os.linesep)
+        print('    print(stderr.decode())', end=os.linesep)
         line = ''
     if line.strip() == "from subprocess import check_call, check_output":
         # increase verbosity to max
