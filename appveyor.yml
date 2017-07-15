@@ -81,15 +81,15 @@ artifacts:
 # repositories, i.e. we can't automatically deploy to obspy/obspy from
 # obspy/anconda-installers, so rely on manually attaching installers to github
 # releases..
- deploy:
-   release: $(OBSPY_VERSION)
-   description: 'Anaconda ObsPy installers'
-   provider: GitHub
-   auth_token:
-     secure: PAE+Y4BDSdConf033yv0vKhmeIevni93HJAX1qg/FpV+IU9eeUTDCTdbHjP0lblY
-   artifact: /.*\ObsPy*.exe/
-   draft: false
-   prerelease: false
-   on:
-     branch: master                 # release from master branch only
-     appveyor_repo_tag: true        # deploy on tag push only
+deploy:
+  release: $(OBSPY_VERSION)
+  description: 'Anaconda ObsPy installers'
+  provider: GitHub
+  auth_token:
+    secure: PAE+Y4BDSdConf033yv0vKhmeIevni93HJAX1qg/FpV+IU9eeUTDCTdbHjP0lblY
+  artifact: /.*\ObsPy*.exe/
+  draft: false
+  prerelease: false
+  on:
+    branch: master                 # release from master branch only
+    appveyor_repo_tag: true        # deploy on tag push only
