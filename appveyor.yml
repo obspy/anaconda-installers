@@ -63,7 +63,8 @@ build: false
 
 test_script:
   - ps: "ls ObsPy*.exe"
-  - "start /wait ObsPy*.exe /InstallationType=JustMe /RegisterPython=0 /AddToPath=1 /S /D=%UserProfile%\ObsPy-Anaconda"
+  - for %%# in (*.txt) do set "file_name=%%~nx#"
+  - "start /wait %file_name% /InstallationType=JustMe /RegisterPython=0 /AddToPath=1 /S /D=%UserProfile%\ObsPy-Anaconda"
   - "obspy-runtests"
 
 on_success:
