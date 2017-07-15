@@ -19,6 +19,8 @@ environment:
       PYTHON_VERSION: "3.6"
       PYTHON_ARCH: "64"
 
+platform: x64
+
 install:
   # - ECHO "Filesystem root:"
   # - ps: "ls \"C:/\""
@@ -44,7 +46,14 @@ install:
 build:
   - "make win64"
 
-test_script:
-  - "dir * /A /S /N"
+build_script:
+  - "make win64"
 
-on_success: false
+test_script:
+  - ps: "ls *"
+
+on_success:
+  - ps: "ls *"
+
+artifacts:
+  - path: '**\ObsPy*.exe'
