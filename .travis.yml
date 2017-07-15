@@ -73,3 +73,5 @@ deploy:
   on:
     tags: true
     repo: obspy/anaconda-installers
+  # try to upload all binaries to one spot..
+  tag_name: "${OBSPY_VERSION}"
