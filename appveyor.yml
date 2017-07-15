@@ -45,10 +45,8 @@ install:
   # done from inside the powershell script as it would require to restart
   # the parent CMD process).
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
-
   # Check that we have the expected version and architecture for Python
   - "python -c \"import sys; print(sys.version)\""
-
   # Install the build and runtime dependencies of the project.
   - "conda update -q --yes conda"
   # Install constructor
@@ -56,7 +54,7 @@ install:
   # list package versions
   - "conda list"
   # build installer
-  - "constructor --platform=%CONDA_PLATFORM% %OBSPY_VERSION%_%CONDA_PYSUFFIX%"
+  - "constructor --verbose --platform=%CONDA_PLATFORM% %OBSPY_VERSION%_%CONDA_PYSUFFIX%"
 
 # Not a .NET project, we build ObsPy in the install step instead
 build: false
@@ -65,9 +63,8 @@ test_script:
   - ps: "ls ObsPy*.exe"
   - "for %%# in (ObsPy*.exe) do set \"file_name=%%~nx#\""
   - "echo %file_name%"
-  - "start /wait \"\" %file_name% /InstallationType=JustMe /RegisterPython=0 /AddToPath=1 /S /D=C:\\ObsPy-Anaconda"
   # instructions for silent installation of Anaconda installer: https://conda.io/docs/help/silent.html
-  # - "start /wait \"\" ObsPy*.exe /InstallationType=JustMe /RegisterPython=0 /AddToPath=1 /S /D=%UserProfile%\\ObsPy-Anaconda"
+  - "start /wait \"\" %file_name% /InstallationType=JustMe /RegisterPython=0 /AddToPath=1 /S /D=C:\\ObsPy-Anaconda"
   - "C:\\ObsPy-Anaconda\\python -m obspy.scripts.runtests --no-flake8 -n anaconda-installers -r"
 
 on_success:
@@ -75,3 +72,21 @@ on_success:
 
 artifacts:
   - path: '**\ObsPy*.exe'
+
+## Deploying binary installer as a release attachment seems to not work across
+## repositories, i.e. we can't automatically deploy to obspy/obspy from
+## obspy/anconda-installers, so rely on manually attaching installers to github
+## releases..
+#
+# deploy:
+#   release: myproduct-v$(appveyor_build_version)
+#   description: 'Release description'
+#   provider: GitHub
+#   auth_token:
+#     secure: PAE+Y4BDSdConf033yv0vKhmeIevni93HJAX1qg/FpV+IU9eeUTDCTdbHjP0lblY
+#   artifact: /.*\ObsPy*.exe/
+#   draft: false
+#   prerelease: false
+#   on:
+#     branch: master                 # release from master branch only
+#     appveyor_repo_tag: true        # deploy on tag push only
