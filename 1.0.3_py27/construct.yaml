@@ -1,8 +1,9 @@
 name: ObsPy
-version: 1.0.3-py27_4
+version: 1.0.3-py27_5
 
 channels:
   - https://conda.anaconda.org/conda-forge
+  - http://repo.continuum.io/pkgs/free/
   - https://conda.anaconda.org/obspy
 
 specs:
@@ -31,6 +32,10 @@ specs:
 # - cryptography   # starting with obspy 1.1.0
 # - jsonschema     # starting with obspy 1.1.0
   - geographiclib        [linux64]
+
+packages:
+  # try to get rid of osx-64 problems by explicitly requesting libgfortran from conda-forge
+  - https://anaconda.org/conda-forge/libgfortran/3.0.0/download/osx-64/libgfortran-3.0.0-0.tar.bz2  [osx64]
 
 license_file: ../anaconda_eula_and_obspy_license_notice.txt
 
