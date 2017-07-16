@@ -3,16 +3,15 @@ language: c
 env:
   global:
     - OBSPY_VERSION=1.0.3
-    - PYTHON_VERSION=3.6
 
 sudo: false
 
 matrix:
   include:
     - os: linux
-      env: CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py27
+      env: PYTHON_VERSION=2.7 CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py27
     - os: linux
-      env: CONDA_PLATFORM=linux-32 CONDA_PYSUFFIX=py27 ARCHITECTURE_32BIT="True"
+      env: PYTHON_VERSION=2.7 CONDA_PLATFORM=linux-32 CONDA_PYSUFFIX=py27 ARCHITECTURE_32BIT="True"
       addons:
         apt:
           packages:
@@ -20,12 +19,12 @@ matrix:
             - libstdc++6:i386
             - gcc-multilib
     - os: osx
-      env: CONDA_PLATFORM=osx-64 CONDA_PYSUFFIX=py27
+      env: PYTHON_VERSION=2.7 CONDA_PLATFORM=osx-64 CONDA_PYSUFFIX=py27
 
     - os: linux
-      env: CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py35
+      env: PYTHON_VERSION=3.5 CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py35
     - os: linux
-      env: CONDA_PLATFORM=linux-32 CONDA_PYSUFFIX=py35 ARCHITECTURE_32BIT="True"
+      env: PYTHON_VERSION=3.5 CONDA_PLATFORM=linux-32 CONDA_PYSUFFIX=py35 ARCHITECTURE_32BIT="True"
       addons:
         apt:
           packages:
@@ -33,7 +32,7 @@ matrix:
             - libstdc++6:i386
             - gcc-multilib
     - os: osx
-      env: CONDA_PLATFORM=osx-64 CONDA_PYSUFFIX=py35
+      env: PYTHON_VERSION=3.5 CONDA_PLATFORM=osx-64 CONDA_PYSUFFIX=py35
 
 install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
@@ -47,49 +46,41 @@ install:
       else
         export ARCH="_64"
       fi
-  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-${OS}-x86${ARCH}.sh -O miniconda.sh;
+  - if [[ "$PYTHON_VERSION" == "2.7" ]]; then
+    export MINICONDA="Miniconda2-latest";
+    elif [[ "$PYTHON_VERSION" == "3.5" ]]; then
+      export MINICONDA="Miniconda3-3.5.5";
+    else
+      export MINICONDA="";
+    fi
+  - wget https://repo.continuum.io/miniconda/${MINICONDA}-${OS}-x86${ARCH}.sh -O miniconda.sh;
   - bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
+  - conda config --add channels conda-forge
+  - conda config --add channels conda-forge
+  - |
+      if [[ "$ARCHITECTURE_32BIT" == "True" ]]; then
+      conda config --add channels obspy
+      fi
+  - conda create -q -n test python=$PYTHON_VERSION
+  - source activate test
   # Useful for debugging any issues with conda
   - conda info -a
-  # Install constructor
-  - conda install -q --yes constructor
+  - conda install obspy==${OBSPY_VERSION}
   # list package versions
-  - conda list
-  # try to fix build problems on osx by adding conda-forge channel with top priority
-  - conda config --add channels conda-forge
-  - conda config --add channels conda-forge
-  # build installer
-  - constructor --verbose --platform=${CONDA_PLATFORM} ${OBSPY_VERSION}_${CONDA_PYSUFFIX}
+  - conda env export
+  - conda list --explicit
 
 script:
   # We change directories to make sure that python won't find the copy
   # of obspy in the source directory, see
   # https://github.com/numpy/numpy/blob/master/.travis.yml#L44
-  - ls -la ObsPy*.sh
   - mkdir empty
   - cd empty
-  - bash ../ObsPy*.sh -b -p $HOME/obspy-anaconda
-  - $HOME/obspy-anaconda/bin/python -m obspy.scripts.runtests --no-flake8 -n anaconda-installers -r
-  - cd ..
+  - python -m obspy.scripts.runtests --no-flake8 -n anaconda-installers -r
 
 notifications:
     email: false
-
-deploy:
-  provider: releases
-  api_key:
-    secure: r3IIcaiBrVGGGzmn8WpZ5MYehLIKNzwpq8jVwlVrmjVxqbDLbeM2sC1zyGGzmrzcYf7BLQpb1hDZ/E8cod9tDmmuqqjwn5dx9/FtCFF/02aMacD7UmND8J3xEJPChu9gHkmgwSQlih/WELH/qDvKvg8mgWThHtX3Klpre42EJGv2btGFkxTr1zELwBZM9Omn0QNs6eHdnncW12iRYGwpw8jSIZtqZ3X/Mp2EcfspJKqqV0TL322480yU6EGAZq7ZvtZTjj+tor0zx3S2HVLcZlzYmUS9EjJLOMWsGrXYOXxyZxSqYiXye00nNgHeSGxXpejjc3Ipf8rZzw4q5zEooURiIAZ8DPjKLdvnTdRnGi5FVFVUnjYDiO6j6WQliUlGna/9N9C2+UfflAhoOSl96vZDKfcNThJkaa/4gdDB9Z5OGkoGlksaY7tYuyBOs9sZP9B55vgJULEsJRFaa+FtkUfwywtvDWAUzzzJTkh0/uKATXiCJXk6t4GKGuhj5WoV/Vp8bxVQBPofHEEepd4lK3V49XJGInYtJ+2YG5oUvQDGIMxqJQNWcxJaPjWdxCPi9iawOIf7fL6OOgB4uLtSIqPgevXKf5VPDSTMM+DssJa5M0iRlgPUNCBKEJB/+w5eBNCE4x/RZhxBMQb5FznJ3vQfaq3v10qen2jeSY0IUJk=
-  file_glob: true
-  file: "ObsPy*.sh"
-  skip_cleanup: true
-  on:
-    tags: true
-    repo: obspy/anaconda-installers
-  # try to upload all binaries to one spot..
-  name: "${OBSPY_VERSION}"
-  draft: false
-  prerelease: false
