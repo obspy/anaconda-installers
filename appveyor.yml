@@ -27,6 +27,16 @@ environment:
       CONDA_PLATFORM: "win-32"
       CONDA_PYSUFFIX: "py27"
 
+    - PYTHON: "C:\\Miniconda36-x64"
+      PYTHON_ARCH: "64"
+      CONDA_PLATFORM: "win-64"
+      CONDA_PYSUFFIX: "py35"
+
+    - PYTHON: "C:\\Miniconda36"
+      PYTHON_ARCH: "32"
+      CONDA_PLATFORM: "win-32"
+      CONDA_PYSUFFIX: "py35"
+
 platform:
   - x64
   - x86

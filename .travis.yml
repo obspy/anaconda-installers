@@ -22,6 +22,19 @@ matrix:
     - os: osx
       env: CONDA_PLATFORM=osx-64 CONDA_PYSUFFIX=py27
 
+    - os: linux
+      env: CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py35
+    - os: linux
+      env: CONDA_PLATFORM=linux-32 CONDA_PYSUFFIX=py35 ARCHITECTURE_32BIT="True"
+      addons:
+        apt:
+          packages:
+            # https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
+            - libstdc++6:i386
+            - gcc-multilib
+    - os: osx
+      env: CONDA_PLATFORM=osx-64 CONDA_PYSUFFIX=py35
+
 install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
       export OS="MacOSX";
