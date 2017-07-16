@@ -1,9 +1,8 @@
 name: ObsPy
-version: 1.0.3-py27_3
+version: 1.0.3-py27_4
 
 channels:
   - https://conda.anaconda.org/conda-forge
-  - http://repo.continuum.io/pkgs/free/
   - https://conda.anaconda.org/obspy
 
 specs:
