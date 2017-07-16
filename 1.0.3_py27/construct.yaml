@@ -35,7 +35,7 @@ specs:
 
 packages:
   # try to get rid of osx-64 problems by explicitly requesting libgfortran from conda-forge
-  - https://anaconda.org/conda-forge/libgfortran/3.0.0/download/osx-64/libgfortran-3.0.0-0.tar.bz2  [osx64]
+  - https://anaconda.org/conda-forge/libgfortran/3.0.0/download/osx-64/libgfortran-3.0.0-0.tar.bz2  [osx]
 
 license_file: ../anaconda_eula_and_obspy_license_notice.txt
 
