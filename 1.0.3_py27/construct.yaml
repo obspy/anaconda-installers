@@ -6,6 +6,11 @@ channels:
   - http://repo.continuum.io/pkgs/free/
   - https://conda.anaconda.org/obspy
 
+# try to get rid of a problem of zlib not yet installed during
+# unpacking/installation of packages
+# see https://travis-ci.org/obspy/anaconda-installers/jobs/254134691#L750
+install_in_dependency_order: true
+
 specs:
   - python 2.7*
   - conda
