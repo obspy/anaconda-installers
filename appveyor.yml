@@ -67,7 +67,7 @@ install:
   - "conda info -a"
   - "conda create -q --yes -n test python=%PYTHON_VERSION%"
   - "activate test"
-  - "conda install --yes obspy==%OBSPY_VERSION%"
+  - "conda install --yes obspy==%OBSPY_VERSION% ipython jupyter basemap basemap-data-hires sqlalchemy gdal mkl"
   # list package versions
   - "conda env export"
   - "conda list --explicit"

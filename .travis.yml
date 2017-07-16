@@ -69,7 +69,16 @@ install:
   - source activate test
   # Useful for debugging any issues with conda
   - conda info -a
-  - conda install obspy==${OBSPY_VERSION}
+  - |
+      if [[ "$ARCHITECTURE_32BIT" == "True" ]]; then
+        # linux32 doesnt have basemap-data-hires
+        conda install obspy==${OBSPY_VERSION} ipython jupyter basemap nomkl sqlalchemy gdal
+      elif [[ "$OS" == "Linux" ]]; then
+        # only linux64 has geographiclib
+        conda install obspy==${OBSPY_VERSION} ipython jupyter basemap nomkl sqlalchemy gdal basemap-data-hires geographiclib
+      else
+        conda install obspy==${OBSPY_VERSION} ipython jupyter basemap nomkl sqlalchemy gdal basemap-data-hires
+      fi
   # list package versions
   - conda env export
   - conda list --explicit
