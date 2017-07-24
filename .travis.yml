@@ -63,6 +63,7 @@ install:
   - conda config --add channels conda-forge
   - conda config --add channels conda-forge
   # build installer
+  - cp ${OBSPY_VERSION}_${PYTHON_VERSION}/construct.${CONDA_PLATFORM}.yaml ${OBSPY_VERSION}_${PYTHON_VERSION}/construct.yaml
   - constructor --verbose --platform=${CONDA_PLATFORM} ${OBSPY_VERSION}_${CONDA_PYSUFFIX}
 
 script:
