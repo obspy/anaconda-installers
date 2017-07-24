@@ -1,0 +1,111 @@
+name: ObsPy
+version: 1.0.3-py35_7
+
+channels:
+  - http://repo.continuum.io/pkgs/free/
+  - https://conda.anaconda.org/conda-forge
+
+# try to get rid of a problem of zlib not yet installed during
+# unpacking/installation of packages
+# see https://travis-ci.org/obspy/anaconda-installers/jobs/254134691#L750
+install_in_dependency_order: true
+
+packages:
+  - https://repo.continuum.io/pkgs/free/linux-32/basemap-1.0.7-np110py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/bleach-1.5.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/cairo-1.14.8-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/curl-7.49.0-1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/cycler-0.10.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/decorator-4.0.11-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/entrypoints-0.2.3-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/fontconfig-2.12.1-3.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/freetype-2.5.5-2.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/future-0.16.0-py35_1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/gdal-2.0.0-py35_1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/geos-3.3.3-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/glib-2.50.2-1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/harfbuzz-0.9.39-2.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/hdf4-4.2.12-1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/hdf5-1.8.17-2.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/html5lib-0.999-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/ipykernel-4.6.1-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/ipython-6.1.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/ipython_genutils-0.2.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/ipywidgets-6.0.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/jedi-0.10.2-py35_2.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/jinja2-2.9.6-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/jpeg-9b-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/jsonschema-2.6.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/jupyter-1.0.0-py35_3.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/jupyter_client-5.1.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/jupyter_console-5.1.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/jupyter_core-4.3.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/kealib-1.4.6-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/libffi-3.2.1-1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/libgdal-2.0.0-1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/libgfortran-3.0.0-1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/libiconv-1.14-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/libnetcdf-4.4.1-1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/libpng-1.6.27-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/libsodium-1.0.10-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/libxml2-2.9.4-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/libxslt-1.1.29-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/lxml-3.8.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/markupsafe-0.23-py35_2.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/matplotlib-1.5.1-np110py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/mistune-0.7.4-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/nbconvert-5.2.1-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/nbformat-4.3.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/nomkl-1.0-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/notebook-5.0.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/numpy-1.10.4-py35_nomkl_2.tar.bz2
+  - https://conda.anaconda.org/obspy/linux-32/obspy-1.0.3-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/openblas-0.2.14-4.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/openssl-1.0.2l-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/pandocfilters-1.4.1-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/pango-1.40.3-1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/path.py-10.3.1-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/pcre-8.39-1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/pexpect-4.2.1-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/pickleshare-0.7.4-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/pip-9.0.1-py35_1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/pixman-0.34.0-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/proj4-4.9.2-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/prompt_toolkit-1.0.14-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/ptyprocess-0.5.1-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/pygments-2.2.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/pyparsing-2.1.4-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/pyqt-4.11.4-py35_4.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/python-3.5.3-1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/python-dateutil-2.6.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/pytz-2017.2-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/pyzmq-16.0.2-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/qt-4.8.7-3.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/qtconsole-4.2.1-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/readline-6.2-2.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/requests-2.14.2-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/scipy-0.17.1-np110py35_nomkl_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/setuptools-27.2.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/simplegeneric-0.8.1-py35_1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/sip-4.18-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/six-1.10.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/sqlalchemy-1.1.11-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/sqlite-3.13.0-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/terminado-0.6-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/testpath-0.3.1-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/tk-8.5.18-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/tornado-4.5.1-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/traitlets-4.3.2-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/wcwidth-0.1.7-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/wheel-0.29.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/widgetsnbextension-2.0.0-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/xerces-c-3.1.4-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/xz-5.2.2-1.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/zeromq-4.1.5-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/zlib-1.2.8-3.tar.bz2
+
+license_file: ../anaconda_eula_and_obspy_license_notice.txt
+
+welcome_image: ../obspy_logo_full_tall_164x314.png  [win]
+header_image: ../obspy_powered_wide_170x70.png      [win]
+icon_image: ../obspy_logo_no_text_highres.png       [win]

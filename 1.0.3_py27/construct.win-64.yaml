@@ -1,5 +1,5 @@
 name: ObsPy
-version: 1.0.3-py27_6
+version: 1.0.3-py27_7
 
 channels:
   - http://repo.continuum.io/pkgs/free/
@@ -24,14 +24,14 @@ packages:
   - https://conda.anaconda.org/conda-forge/win-64/colorama-0.3.9-py27_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/configparser-3.5.0-py27_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/cryptography-1.9-py27_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-64/curl-7.52.1-vc9_0.tar.bz2
+  - https://conda.anaconda.org/conda-forge/win-64/curl-7.49.1-vc9_2.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/cycler-0.10.0-py27_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-64/decorator-4.0.11-py27_0.tar.bz2
+  - https://conda.anaconda.org/conda-forge/win-64/decorator-4.1.1-py27_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/entrypoints-0.2.3-py27_1.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/enum34-1.1.6-py27_1.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/expat-2.2.1-vc9_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/freetype-2.7-vc9_1.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-64/freexl-1.0.2-vc9_1.tar.bz2
+  - https://conda.anaconda.org/conda-forge/win-64/freexl-1.0.2-vc9_2.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/funcsigs-1.0.2-py27_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/functools32-3.2.3.2-py27_1.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/future-0.16.0-py27_0.tar.bz2
@@ -56,7 +56,7 @@ packages:
   - https://conda.anaconda.org/conda-forge/win-64/jupyter_core-4.3.0-py27_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/kealib-1.4.7-vc9_2.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/krb5-1.14.2-vc9_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-64/libgdal-2.2.1-vc9_1.tar.bz2
+  - https://conda.anaconda.org/conda-forge/win-64/libgdal-2.2.1-vc9_2.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/libiconv-1.14-vc9_4.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/libnetcdf-4.4.1.1-vc9_5.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/libpng-1.6.28-vc9_0.tar.bz2
@@ -95,7 +95,7 @@ packages:
   - https://conda.anaconda.org/conda-forge/win-64/pyshp-1.2.11-py27_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/pysocks-1.6.7-py27_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/python-2.7.13-1.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-64/python-dateutil-2.6.0-py27_0.tar.bz2
+  - https://conda.anaconda.org/conda-forge/win-64/python-dateutil-2.6.1-py27_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/pytz-2017.2-py27_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/pyzmq-16.0.2-py27_2.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/qt-4.8.7-vc9_6.tar.bz2
@@ -103,7 +103,7 @@ packages:
   - https://conda.anaconda.org/conda-forge/win-64/requests-2.18.1-py27_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/scandir-1.5-py27_1.tar.bz2
   - https://repo.continuum.io/pkgs/free/win-64/scipy-0.19.1-np113py27_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-64/setuptools-33.1.1-py27_0.tar.bz2
+  - https://conda.anaconda.org/conda-forge/win-64/setuptools-36.2.0-py27_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/simplegeneric-0.8.1-py27_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/singledispatch-3.4.0.3-py27_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/win-64/sip-4.18-py27_1.tar.bz2

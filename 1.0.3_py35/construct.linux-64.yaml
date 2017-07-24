@@ -1,5 +1,5 @@
 name: ObsPy
-version: 1.0.3-py35_6
+version: 1.0.3-py35_7
 
 channels:
   - http://repo.continuum.io/pkgs/free/
