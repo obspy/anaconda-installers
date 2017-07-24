@@ -94,7 +94,7 @@ artifacts:
 # obspy/anconda-installers, so rely on manually attaching installers to github
 # releases..
 deploy:
-  release: $(OBSPY_VERSION)
+    release: $(APPVEYOR_REPO_TAG_NAME)-win
   description: 'Anaconda ObsPy installers'
   provider: GitHub
   auth_token:
