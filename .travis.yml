@@ -92,6 +92,6 @@ deploy:
     tags: true
     repo: obspy/anaconda-installers
   # try to upload all binaries to one spot..
-  name: "${OBSPY_VERSION}"
+  name: "${TRAVIS_TAG}-unix"
   draft: false
   prerelease: false
