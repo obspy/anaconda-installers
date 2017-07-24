@@ -10,22 +10,35 @@ environment:
     # See: http://stackoverflow.com/a/13751649/163740
     CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\misc\\appveyor\\run_with_env.cmd"
     OBSPY_VERSION: "1.0.3"
-    PYTHON_VERSION: "3.6"
 
   matrix:
     # Pre-installed Python versions, which Appveyor may upgrade to
     # a later point release.
     # See: http://www.appveyor.com/docs/installed-software#python
 
-    - PYTHON: "C:\\Miniconda36-x64"
+    - PYTHON: "C:\\Miniconda-x64"
+      PYTHON_VERSION: "2.7"
       PYTHON_ARCH: "64"
       CONDA_PLATFORM: "win-64"
       CONDA_PYSUFFIX: "py27"
 
-    - PYTHON: "C:\\Miniconda36"
+    - PYTHON: "C:\\Miniconda"
+      PYTHON_VERSION: "2.7"
       PYTHON_ARCH: "32"
       CONDA_PLATFORM: "win-32"
       CONDA_PYSUFFIX: "py27"
+
+    - PYTHON: "C:\\Miniconda35-x64"
+      PYTHON_VERSION: "3.5"
+      PYTHON_ARCH: "64"
+      CONDA_PLATFORM: "win-64"
+      CONDA_PYSUFFIX: "py35"
+
+    - PYTHON: "C:\\Miniconda35"
+      PYTHON_VERSION: "3.5"
+      PYTHON_ARCH: "32"
+      CONDA_PLATFORM: "win-32"
+      CONDA_PYSUFFIX: "py35"
 
 platform:
   - x64
@@ -49,47 +62,20 @@ install:
   - "python -c \"import sys; print(sys.version)\""
   # Install the build and runtime dependencies of the project.
   - "conda update -q --yes conda"
-  # Install constructor
-  - "conda install -q --yes constructor"
+  - "conda config --add channels conda-forge"
+  - "conda config --add channels conda-forge"
+  - "conda info -a"
+  - "conda create -q --yes -n test python=%PYTHON_VERSION%"
+  - "activate test"
+  - "conda install --yes obspy==%OBSPY_VERSION% ipython jupyter basemap basemap-data-hires sqlalchemy gdal mkl"
   # list package versions
-  - "conda list"
-  # patch constructor's makensis call to maximum verbosity, see conda/constructor#94
-  - "python patch_makensis_verbosity.py"
-  # build installer
-  - "constructor --verbose --platform=%CONDA_PLATFORM% %OBSPY_VERSION%_%CONDA_PYSUFFIX%"
+  - "conda env export"
+  - "conda list --explicit"
 
 # Not a .NET project, we build ObsPy in the install step instead
 build: false
 
 test_script:
-  - ps: "ls ObsPy*.exe"
-  - "for %%# in (ObsPy*.exe) do set \"file_name=%%~nx#\""
-  - "echo %file_name%"
-  # instructions for silent installation of Anaconda installer: https://conda.io/docs/help/silent.html
-  - "start /wait \"\" %file_name% /InstallationType=JustMe /RegisterPython=0 /AddToPath=1 /S /D=C:\\ObsPy-Anaconda"
   # XXX - "C:\\ObsPy-Anaconda\\python -m obspy.scripts.runtests --no-flake8 -n anaconda-installers -r"
   # XXX for now only test core, to get passing tests, should be reverted!
-  - "C:\\ObsPy-Anaconda\\python -m obspy.scripts.runtests --no-flake8 -n anaconda-installers -r core"
-
-on_success:
-  - ps: "ls ObsPy*.exe"
-
-artifacts:
-  - path: 'ObsPy*.exe'
-
-# Deploying binary installer as a release attachment seems to not work across
-# repositories, i.e. we can't automatically deploy to obspy/obspy from
-# obspy/anconda-installers, so rely on manually attaching installers to github
-# releases..
-deploy:
-  release: $(OBSPY_VERSION)
-  description: 'Anaconda ObsPy installers'
-  provider: GitHub
-  auth_token:
-    secure: PAE+Y4BDSdConf033yv0vKhmeIevni93HJAX1qg/FpV+IU9eeUTDCTdbHjP0lblY
-  artifact: /ObsPy*.exe/
-  draft: false
-  prerelease: false
-  force_update: true
-  on:
-    appveyor_repo_tag: true        # deploy on tag push only
+  - "python -m obspy.scripts.runtests --no-flake8 -n anaconda-installers -r core"

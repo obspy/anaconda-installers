@@ -1,5 +1,5 @@
 name: ObsPy
-version: 1.0.3-py27_5
+version: 1.0.3-py35_5
 
 channels:
   - https://conda.anaconda.org/conda-forge
@@ -12,7 +12,7 @@ channels:
 install_in_dependency_order: true
 
 specs:
-  - python 2.7*
+  - python 3.5*
   - conda
   - mkl 2017.0.1         [win]
   - nomkl                [not win]
