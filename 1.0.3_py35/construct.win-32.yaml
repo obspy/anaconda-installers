@@ -10,111 +10,20 @@ channels:
 # see https://travis-ci.org/obspy/anaconda-installers/jobs/254134691#L750
 install_in_dependency_order: true
 
-packages:
-  - https://conda.anaconda.org/conda-forge/win-32/asn1crypto-0.22.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/basemap-1.1.0-np113py35_1.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/basemap-data-hires-1.1.0-0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/bleach-1.5.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/ca-certificates-2017.4.17-0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/certifi-2017.4.17-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/cffi-1.10.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/chardet-3.0.2-py35_1.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/colorama-0.3.9-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/cryptography-1.9-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/curl-7.49.1-vc14_2.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/cycler-0.10.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/decorator-4.1.1-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/entrypoints-0.2.3-py35_1.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/expat-2.2.1-vc14_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/freetype-2.7-vc14_1.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/freexl-1.0.2-vc14_2.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/future-0.16.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/gdal-2.2.1-np113py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/geos-3.5.1-vc14_1.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/hdf4-4.2.12-vc14_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/hdf5-1.8.18-vc14_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/html5lib-0.9999999-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/icu-58.1-vc14_1.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/idna-2.5-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/ipykernel-4.6.1-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/ipython-6.1.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/ipython_genutils-0.2.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/ipywidgets-6.0.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/jedi-0.10.2-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/jinja2-2.9.5-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/jpeg-9b-vc14_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/jsonschema-2.5.1-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/jupyter-1.0.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/jupyter_client-5.1.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/jupyter_console-5.1.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/jupyter_core-4.3.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/kealib-1.4.7-vc14_2.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/krb5-1.14.2-vc14_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/libgdal-2.2.1-vc14_2.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/libiconv-1.14-vc14_4.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/libnetcdf-4.4.1.1-vc14_5.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/libpng-1.6.28-vc14_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/libpq-9.5.4-vc14_4.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/libspatialite-4.3.0a-vc14_15.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/libtiff-4.0.6-vc14_7.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/libxml2-2.9.4-vc14_4.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/libxslt-1.1.29-vc14_5.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/lxml-3.8.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/markupsafe-1.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/matplotlib-1.5.3-np113py35_8.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/mistune-0.7.4-py35_0.tar.bz2
-  - https://repo.continuum.io/pkgs/free/win-32/mkl-2017.0.3-0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/nbconvert-5.2.1-py35_1.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/nbformat-4.3.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/notebook-5.0.0-py35_0.tar.bz2
-  - https://repo.continuum.io/pkgs/free/win-32/numpy-1.13.1-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/obspy-1.0.3-py35_1.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/openjpeg-2.1.2-vc14_3.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/openssl-1.0.2l-vc14_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/pandoc-1.19.2-0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/pandocfilters-1.4.1-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/pickleshare-0.7.3-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/pip-9.0.1-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/proj4-4.9.3-vc14_4.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/prompt_toolkit-1.0.14-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/pycparser-2.18-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/pygments-2.2.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/pyopenssl-16.2.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/pyparsing-2.2.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/pyproj-1.9.5.1-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/pyqt-4.11.4-py35_2.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/pyshp-1.2.11-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/pysocks-1.6.7-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/python-3.5.3-3.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/python-dateutil-2.6.1-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/pytz-2017.2-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/pyzmq-16.0.2-py35_2.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/qt-4.8.7-vc14_7.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/qtconsole-4.3.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/requests-2.18.1-py35_0.tar.bz2
-  - https://repo.continuum.io/pkgs/free/win-32/scipy-0.19.1-np113py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/setuptools-36.2.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/simplegeneric-0.8.1-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/sip-4.18-py35_1.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/six-1.10.0-py35_1.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/sqlalchemy-1.1.11-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/sqlite-3.13.0-vc14_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/testpath-0.3-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/tornado-4.5.1-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/traitlets-4.3.2-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/urllib3-1.21.1-py35_1.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/vc-14-0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/vs2015_runtime-14.0.25420-0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/wcwidth-0.1.7-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/webencodings-0.5-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/wheel-0.29.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/widgetsnbextension-2.0.0-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/win_inet_pton-1.0.1-py35_1.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/win_unicode_console-0.5-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/wincertstore-0.2-py35_0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/xerces-c-3.1.4-vc14_2.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/xz-5.2.2-0.tar.bz2
-  - https://conda.anaconda.org/conda-forge/win-32/zlib-1.2.11-vc14_0.tar.bz2
+specs:
+  - python 3.5*
+  - conda
+  - mkl 2017.0.1
+  - ipython
+  - jupyter
+  - obspy 1.0.3
+  - numpy 1.13.1
+  - scipy 0.19.1
+  - matplotlib 1.5.3
+  - basemap 1.1.0
+  - basemap-data-hires
+  - sqlalchemy
+  - gdal
 
 license_file: ../anaconda_eula_and_obspy_license_notice.txt
 
