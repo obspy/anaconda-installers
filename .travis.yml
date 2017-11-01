@@ -2,7 +2,7 @@ language: c
 
 env:
   global:
-    - OBSPY_VERSION=1.0.3
+    - OBSPY_VERSION=1.1.0
 
 sudo: false
 
@@ -22,7 +22,7 @@ matrix:
       env: PYTHON_VERSION=2.7 CONDA_PLATFORM=osx-64 CONDA_PYSUFFIX=py27
 
     - os: linux
-      env: PYTHON_VERSION=3.5 CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py35
+      env: PYTHON_VERSION=3.6 CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py36
     - os: linux
       env: PYTHON_VERSION=3.5 CONDA_PLATFORM=linux-32 CONDA_PYSUFFIX=py35 ARCHITECTURE_32BIT="True"
       addons:
@@ -32,7 +32,7 @@ matrix:
             - libstdc++6:i386
             - gcc-multilib
     - os: osx
-      env: PYTHON_VERSION=3.5 CONDA_PLATFORM=osx-64 CONDA_PYSUFFIX=py35
+      env: PYTHON_VERSION=3.6 CONDA_PLATFORM=osx-64 CONDA_PYSUFFIX=py36
 
 install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
@@ -48,10 +48,8 @@ install:
       fi
   - if [[ "$PYTHON_VERSION" == "2.7" ]]; then
     export MINICONDA="Miniconda2-latest";
-    elif [[ "$PYTHON_VERSION" == "3.5" ]]; then
-      export MINICONDA="Miniconda3-3.5.5";
     else
-      export MINICONDA="";
+      export MINICONDA="Miniconda3-3.5.5";
     fi
   - wget https://repo.continuum.io/miniconda/${MINICONDA}-${OS}-x86${ARCH}.sh -O miniconda.sh;
   - bash miniconda.sh -b -p $HOME/miniconda
@@ -69,15 +67,15 @@ install:
   - source activate test
   # Useful for debugging any issues with conda
   - conda info -a
+  - if [[ "$PYTHON_VERSION" == "2.7" ]]; then
+    conda install mock;
+    fi
   - |
       if [[ "$ARCHITECTURE_32BIT" == "True" ]]; then
-        # linux32 doesnt have basemap-data-hires
-        conda install obspy==${OBSPY_VERSION} ipython jupyter basemap nomkl sqlalchemy gdal
-      elif [[ "$OS" == "Linux" ]]; then
-        # only linux64 has geographiclib
-        conda install obspy==${OBSPY_VERSION} ipython jupyter basemap nomkl sqlalchemy gdal basemap-data-hires geographiclib
+        # linux32 doesnt have basemap-data-hires and also no geographiclib
+        conda install obspy==${OBSPY_VERSION} ipython jupyter basemap nomkl sqlalchemy pyshp cryptography
       else
-        conda install obspy==${OBSPY_VERSION} ipython jupyter basemap nomkl sqlalchemy gdal basemap-data-hires
+        conda install obspy==${OBSPY_VERSION} ipython jupyter basemap nomkl sqlalchemy pyshp cryptography basemap-data-hires geographiclib
       fi
   # list package versions
   - conda env export

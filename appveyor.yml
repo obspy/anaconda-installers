@@ -9,7 +9,7 @@ environment:
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
     # See: http://stackoverflow.com/a/13751649/163740
     CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\misc\\appveyor\\run_with_env.cmd"
-    OBSPY_VERSION: "1.0.3"
+    OBSPY_VERSION: "1.1.0"
 
   matrix:
     # Pre-installed Python versions, which Appveyor may upgrade to
@@ -29,16 +29,16 @@ environment:
       CONDA_PYSUFFIX: "py27"
 
     - PYTHON: "C:\\Miniconda35-x64"
-      PYTHON_VERSION: "3.5"
+      PYTHON_VERSION: "3.6"
       PYTHON_ARCH: "64"
       CONDA_PLATFORM: "win-64"
-      CONDA_PYSUFFIX: "py35"
+      CONDA_PYSUFFIX: "py36"
 
     - PYTHON: "C:\\Miniconda35"
-      PYTHON_VERSION: "3.5"
+      PYTHON_VERSION: "3.6"
       PYTHON_ARCH: "32"
       CONDA_PLATFORM: "win-32"
-      CONDA_PYSUFFIX: "py35"
+      CONDA_PYSUFFIX: "py36"
 
 platform:
   - x64
@@ -67,7 +67,11 @@ install:
   - "conda info -a"
   - "conda create -q --yes -n test python=%PYTHON_VERSION%"
   - "activate test"
-  - "conda install --yes obspy==%OBSPY_VERSION% ipython jupyter basemap basemap-data-hires sqlalchemy gdal mkl"
+  - ps: |
+      If ($env:PYTHON_VERSION -eq "2.7") {
+          conda install --yes mock
+      }
+  - "conda install --yes obspy==%OBSPY_VERSION% ipython jupyter basemap basemap-data-hires sqlalchemy pyshp mkl geographiclib cryptography"
   # list package versions
   - "conda env export"
   - "conda list --explicit"
