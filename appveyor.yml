@@ -60,7 +60,7 @@ install:
   # Install the build and runtime dependencies of the project.
   - "conda update -q --yes conda"
   # Install constructor
-  - "conda install -q --yes constructor"
+  - "conda install -q --yes constructor==1.5.5"
   # list package versions
   - "conda list"
   # build installer

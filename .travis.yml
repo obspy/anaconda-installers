@@ -58,7 +58,7 @@ install:
   # Useful for debugging any issues with conda
   - conda info -a
   # Install constructor
-  - conda install -q --yes constructor
+  - conda install -q --yes constructor==1.5.5
   # list package versions
   - conda list
   # try to fix build problems on osx by adding conda-forge channel with top priority
