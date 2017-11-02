@@ -1,5 +1,5 @@
 name: ObsPy
-version: 1.0.3-py27_7
+version: 1.1.0-py27_0
 
 channels:
   - http://repo.continuum.io/pkgs/free/
@@ -13,17 +13,20 @@ install_in_dependency_order: true
 specs:
   - python 2.7*
   - conda
-  - mkl 2017.0.1
+  - mkl 2018.0.0
   - ipython
   - jupyter
-  - obspy 1.0.3
-  - numpy 1.13.1
+  - obspy 1.1.0
+  - numpy 1.13.3
   - scipy 0.19.1
-  - matplotlib 1.5.3
+  - matplotlib 2.1.0
   - basemap 1.1.0
   - basemap-data-hires
   - sqlalchemy
-  - gdal
+  - pyshp
+  - geographiclib
+  - cryptography
+  - mock
 
 license_file: ../anaconda_eula_and_obspy_license_notice.txt
 
