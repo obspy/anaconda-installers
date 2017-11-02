@@ -13,12 +13,6 @@ matrix:
       env: CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py27
     - os: linux
       env: CONDA_PLATFORM=linux-32 CONDA_PYSUFFIX=py27 ARCHITECTURE_32BIT="True"
-      addons:
-        apt:
-          packages:
-            # https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
-            - libstdc++6:i386
-            - gcc-multilib
     - os: osx
       env: CONDA_PLATFORM=osx-64 CONDA_PYSUFFIX=py27
 
@@ -26,14 +20,22 @@ matrix:
       env: CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py36
     - os: linux
       env: CONDA_PLATFORM=linux-32 CONDA_PYSUFFIX=py35 ARCHITECTURE_32BIT="True"
-      addons:
-        apt:
-          packages:
-            # https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
-            - libstdc++6:i386
-            - gcc-multilib
     - os: osx
       env: CONDA_PLATFORM=osx-64 CONDA_PYSUFFIX=py36
+
+# it seems Travis is now ignoring addons/apt/packages when nested into
+# matrix/includes, so manually install those packages:
+# $ travis lint .travis.yml
+# Warnings for .travis.yml:
+# [x] in matrix.include section: unexpected key addons, dropping
+# See also
+# https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
+before_install:
+  - |
+      if [[ "$ARCHITECTURE_32BIT" == "True" ]]; then
+        sudo apt-get -qq update;
+        sudo apt-get install -y libstdc++6:i386 gcc-multilib;
+      fi
 
 install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
