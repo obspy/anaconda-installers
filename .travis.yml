@@ -54,7 +54,7 @@ install:
       export MINICONDA="Miniconda3-3.5.5";
     fi
   - wget https://repo.continuum.io/miniconda/${MINICONDA}-${OS}-x86${ARCH}.sh -O miniconda.sh;
-  - bash miniconda.sh -b -p $HOME/miniconda
+  - yes yes | bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
