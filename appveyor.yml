@@ -60,13 +60,9 @@ install:
   # Install the build and runtime dependencies of the project.
   - "conda update -q --yes conda"
   # Install constructor
-  # seems there's a bug in constructor 2.0.0 for windows, so install <2.0.0
-  # see https://ci.appveyor.com/project/obspy/anaconda-installers/build/1.0.67/job/k1352gjjak4nj5g6#L99
-  - "conda install -q --yes 'constructor<2.0.0'"
+  - "conda install -q --yes constructor"
   # list package versions
   - "conda list"
-  # patch constructor's makensis call to maximum verbosity, see conda/constructor#94
-  - "python patch_makensis_verbosity.py"
   # build installer
   #- ps: "Copy-Item %OBSPY_VERSION%_%CONDA_PYSUFFIX%\\construct.%CONDA_PLATFORM%.yaml %OBSPY_VERSION%_%CONDA_PYSUFFIX%\\construct.yaml"
   - "copy %OBSPY_VERSION%_%CONDA_PYSUFFIX%\\construct.%CONDA_PLATFORM%.yaml %OBSPY_VERSION%_%CONDA_PYSUFFIX%\\construct.yaml"
