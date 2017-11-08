@@ -10,7 +10,13 @@ channels:
 # see https://travis-ci.org/obspy/anaconda-installers/jobs/254134691#L750
 install_in_dependency_order: true
 
+# install_in_dependency_order does not work with explicit package list..
+# so we need to move packages to the top manually that need to be there before
+# others can get post-linked..
 packages:
+  - https://repo.continuum.io/pkgs/free/linux-32/python-3.5.4-0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/python-dateutil-2.6.1-py35_0.tar.bz2
+  - https://repo.continuum.io/pkgs/free/linux-32/xz-5.2.3-0.tar.bz2
   - https://repo.continuum.io/pkgs/free/linux-32/asn1crypto-0.22.0-py35_0.tar.bz2
   - https://repo.continuum.io/pkgs/free/linux-32/basemap-1.0.7-np110py35_0.tar.bz2
   - https://repo.continuum.io/pkgs/free/linux-32/bleach-1.5.0-py35_0.tar.bz2
@@ -77,8 +83,6 @@ packages:
   - https://repo.continuum.io/pkgs/free/linux-32/pyparsing-2.2.0-py35_0.tar.bz2
   - https://repo.continuum.io/pkgs/free/linux-32/pyqt-4.11.4-py35_4.tar.bz2
   - https://conda.anaconda.org/conda-forge/noarch/pyshp-1.2.12-py_0.tar.bz2
-  - https://repo.continuum.io/pkgs/free/linux-32/python-3.5.4-0.tar.bz2
-  - https://repo.continuum.io/pkgs/free/linux-32/python-dateutil-2.6.1-py35_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/noarch/pytz-2017.3-py_1.tar.bz2
   - https://repo.continuum.io/pkgs/free/linux-32/pyzmq-16.0.2-py35_0.tar.bz2
   - https://repo.continuum.io/pkgs/free/linux-32/qt-4.8.7-3.tar.bz2
@@ -100,7 +104,6 @@ packages:
   - https://repo.continuum.io/pkgs/free/linux-32/wcwidth-0.1.7-py35_0.tar.bz2
   - https://conda.anaconda.org/conda-forge/noarch/wheel-0.30.0-py_1.tar.bz2
   - https://repo.continuum.io/pkgs/free/linux-32/widgetsnbextension-3.0.2-py35_0.tar.bz2
-  - https://repo.continuum.io/pkgs/free/linux-32/xz-5.2.3-0.tar.bz2
   - https://repo.continuum.io/pkgs/free/linux-32/zeromq-4.1.5-0.tar.bz2
   - https://repo.continuum.io/pkgs/free/linux-32/zlib-1.2.11-0.tar.bz2
 
