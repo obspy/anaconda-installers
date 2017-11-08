@@ -59,8 +59,8 @@ install:
   - "python -c \"import sys; print(sys.version)\""
   # Install the build and runtime dependencies of the project.
   - "conda update -q --yes conda"
-  # Install constructor
-  - "conda install -q --yes constructor==1.5.5"
+  # Install constructor, take into account what vc version we target later in the build..
+  - "conda install -q --yes constructor==1.5.5 vc==9"
   # list package versions
   - "conda list"
   # build installer
