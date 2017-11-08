@@ -10,19 +10,18 @@ environment:
     # See: http://stackoverflow.com/a/13751649/163740
     CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\misc\\appveyor\\run_with_env.cmd"
     OBSPY_VERSION: "1.1.0"
-    PYTHON_VERSION: "3.6"
 
   matrix:
     # Pre-installed Python versions, which Appveyor may upgrade to
     # a later point release.
     # See: http://www.appveyor.com/docs/installed-software#python
 
-    - PYTHON: "C:\\Miniconda36-x64"
+    - PYTHON: "C:\\Miniconda-x64"
       PYTHON_ARCH: "64"
       CONDA_PLATFORM: "win-64"
       CONDA_PYSUFFIX: "py27"
 
-    - PYTHON: "C:\\Miniconda36"
+    - PYTHON: "C:\\Miniconda"
       PYTHON_ARCH: "32"
       CONDA_PLATFORM: "win-32"
       CONDA_PYSUFFIX: "py27"
@@ -60,7 +59,7 @@ install:
   # Install the build and runtime dependencies of the project.
   - "conda update -q --yes conda"
   # Install constructor, take into account what vc version we target later in the build..
-  - "conda install -q --yes constructor==1.5.5 vc==9"
+  - "conda install -q --yes constructor==1.5.5"
   # list package versions
   - "conda list"
   # build installer
