@@ -3,6 +3,7 @@ version: 1.1.0-py36_0
 
 channels:
   - http://repo.continuum.io/pkgs/free/
+  - http://repo.continuum.io/pkgs/main/
   - https://conda.anaconda.org/conda-forge
 
 # try to get rid of a problem of zlib not yet installed during
