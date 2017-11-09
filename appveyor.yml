@@ -15,17 +15,6 @@ environment:
     # Pre-installed Python versions, which Appveyor may upgrade to
     # a later point release.
     # See: http://www.appveyor.com/docs/installed-software#python
-
-    - PYTHON: "C:\\Miniconda-x64"
-      PYTHON_ARCH: "64"
-      CONDA_PLATFORM: "win-64"
-      CONDA_PYSUFFIX: "py27"
-
-    - PYTHON: "C:\\Miniconda"
-      PYTHON_ARCH: "32"
-      CONDA_PLATFORM: "win-32"
-      CONDA_PYSUFFIX: "py27"
-
     - PYTHON: "C:\\Miniconda36-x64"
       PYTHON_ARCH: "64"
       CONDA_PLATFORM: "win-64"
@@ -59,13 +48,11 @@ install:
   # Install the build and runtime dependencies of the project.
   - "conda update -q --yes conda"
   # Install constructor, take into account what vc version we target later in the build..
-  - "conda install -q --yes constructor==1.5.5"
+  - "conda install -q --yes constructor"
   # list package versions
   - "conda list"
   # build installer
-  #- ps: "Copy-Item %OBSPY_VERSION%_%CONDA_PYSUFFIX%\\construct.%CONDA_PLATFORM%.yaml %OBSPY_VERSION%_%CONDA_PYSUFFIX%\\construct.yaml"
-  - "copy %OBSPY_VERSION%_%CONDA_PYSUFFIX%\\construct.%CONDA_PLATFORM%.yaml %OBSPY_VERSION%_%CONDA_PYSUFFIX%\\construct.yaml"
-  - "constructor --verbose --platform=%CONDA_PLATFORM% %OBSPY_VERSION%_%CONDA_PYSUFFIX%"
+  - "constructor --verbose obspy
 
 # Not a .NET project, we build ObsPy in the install step instead
 build: false

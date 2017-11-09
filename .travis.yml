@@ -10,32 +10,8 @@ sudo: false
 matrix:
   include:
     - os: linux
-      env: CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py27
-    - os: linux
-      env: CONDA_PLATFORM=linux-32 CONDA_PYSUFFIX=py27 ARCHITECTURE_32BIT="True"
     - os: osx
-      env: CONDA_PLATFORM=osx-64 CONDA_PYSUFFIX=py27
 
-    - os: linux
-      env: CONDA_PLATFORM=linux-64 CONDA_PYSUFFIX=py36
-    - os: linux
-      env: CONDA_PLATFORM=linux-32 CONDA_PYSUFFIX=py35 ARCHITECTURE_32BIT="True"
-    - os: osx
-      env: CONDA_PLATFORM=osx-64 CONDA_PYSUFFIX=py36
-
-# it seems Travis is now ignoring addons/apt/packages when nested into
-# matrix/includes, so manually install those packages:
-# $ travis lint .travis.yml
-# Warnings for .travis.yml:
-# [x] in matrix.include section: unexpected key addons, dropping
-# See also
-# https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
-before_install:
-  - |
-      if [[ "$ARCHITECTURE_32BIT" == "True" ]]; then
-        sudo apt-get -qq update;
-        sudo apt-get install -y libstdc++6:i386 gcc-multilib;
-      fi
 
 install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
@@ -43,13 +19,7 @@ install:
     else
       export OS="Linux";
     fi
-  - |
-      if [[ "$ARCHITECTURE_32BIT" == "True" ]]; then
-        export ARCH=""
-      else
-        export ARCH="_64"
-      fi
-  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-${OS}-x86${ARCH}.sh -O miniconda.sh;
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-${OS}-x86_64.sh -O miniconda.sh;
   - bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
@@ -58,15 +28,13 @@ install:
   # Useful for debugging any issues with conda
   - conda info -a
   # Install constructor
-  - conda install -q --yes constructor==1.5.5
+  - conda install -q --yes constructor
   # list package versions
   - conda list
   # try to fix build problems on osx by adding conda-forge channel with top priority
   - conda config --add channels conda-forge
-  - conda config --add channels conda-forge
   # build installer
-  - cp ${OBSPY_VERSION}_${CONDA_PYSUFFIX}/construct.${CONDA_PLATFORM}.yaml ${OBSPY_VERSION}_${CONDA_PYSUFFIX}/construct.yaml
-  - constructor --verbose --platform=${CONDA_PLATFORM} ${OBSPY_VERSION}_${CONDA_PYSUFFIX}
+  - constructor --verbose obspy
 
 script:
   # We change directories to make sure that python won't find the copy

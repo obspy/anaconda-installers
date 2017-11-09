@@ -1,0 +1,20 @@
+name: ObsPy
+version: 1.1.0-py36_0
+
+
+channels:
+  - http://repo.continuum.io/pkgs/free/
+  - https://conda.anaconda.org/conda-forge
+
+
+packages:
+    - python 3.6*
+    - obspy
+
+
+license_file: ../anaconda_eula_and_obspy_license_notice.txt
+
+
+welcome_image: ../obspy_logo_full_tall_164x314.png  [win]
+header_image: ../obspy_powered_wide_170x70.png      [win]
+icon_image: ../obspy_logo_no_text_highres.png       [win]
