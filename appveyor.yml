@@ -52,7 +52,7 @@ install:
   # list package versions
   - "conda list"
   # build installer
-  - "constructor --verbose obspy
+  - "constructor --verbose obspy"
 
 # Not a .NET project, we build ObsPy in the install step instead
 build: false
