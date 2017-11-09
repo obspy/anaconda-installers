@@ -12,16 +12,12 @@ channels:
 install_in_dependency_order: true
 
 specs:
-  - python 3.5.3
+  - python 3.5*
   - conda
-  - mkl 2018.0.0
   - ipython
   - jupyter
   - obspy 1.1.0
-  - numpy
-  - scipy
-  - matplotlib 2.1.0
-  - basemap 1.1.0
+  - basemap
   - basemap-data-hires
   - sqlalchemy
   - pyshp
