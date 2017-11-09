@@ -16,12 +16,13 @@ osx64:
 	constructor --platform=osx-64 1.1.0_py27
 	constructor --platform=osx-64 1.1.0_py36
 
+# basemap 1.1.0 seems to not be available for py36 on win
 win: win64 win32
 
 win64:
 	constructor --platform=win-64 1.1.0_py27
-	constructor --platform=win-64 1.1.0_py36
+	constructor --platform=win-64 1.1.0_py35
 
 win32:
 	constructor --platform=win-32 1.1.0_py27
-	constructor --platform=win-32 1.1.0_py36
+	constructor --platform=win-32 1.1.0_py35
