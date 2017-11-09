@@ -19,7 +19,7 @@ specs:
   - jupyter
   - obspy 1.1.0
   - numpy
-  - scipy 1.0.0
+  - scipy 0.19.1
   - matplotlib 2.1.0
   - basemap 1.1.0
   - basemap-data-hires
