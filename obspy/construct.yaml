@@ -1,19 +1,23 @@
 name: ObsPy
 version: 1.1.0-py36_0
 
+install_in_dependency_order: True
 
 channels:
   - http://repo.continuum.io/pkgs/free/
   - https://conda.anaconda.org/conda-forge
 
+specs:
+  - python 3.6*
+  - conda
+  - obspy
 
-packages:
-    - python 3.6*
-    - obspy
-
+exclude:
+  - qt
+  - sip
+  - pyqt
 
 license_file: ../anaconda_eula_and_obspy_license_notice.txt
-
 
 welcome_image: ../obspy_logo_full_tall_164x314.png  [win]
 header_image: ../obspy_powered_wide_170x70.png      [win]
