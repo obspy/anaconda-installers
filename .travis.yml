@@ -58,6 +58,7 @@ install:
   # Useful for debugging any issues with conda
   - conda info -a
   # Install constructor
+  # XXX when switching to constructor 2.0: activate "ignore_duplicate_files" key in recipes
   - conda install -q --yes constructor==1.5.5
   # list package versions
   - conda list

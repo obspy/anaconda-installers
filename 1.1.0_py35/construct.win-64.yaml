@@ -19,7 +19,7 @@ install_in_dependency_order: true
 # Checking for duplicate files ...
 # Error: File 'Lib/site-packages/mpl_toolkits/__init__.py' found in multiple
 #   packages: basemap-1.1.0-py27_3.tar.bz2, matplotlib-1.4.3-np110py27_1.tar.bz2
-ignore_duplicate_files: true
+# XXX ignore_duplicate_files: true
 
 specs:
   - python 3.5*
