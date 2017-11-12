@@ -15,7 +15,7 @@ install_in_dependency_order: true
 # to cause errors, so for now skip that check:
 # $ constructor --verbose --platform=win-64 D:\Workspace\anaconda-installers\1.1.0_py27\
 # platform: win-64
-# [...]
+# ...
 # Checking for duplicate files ...
 # Error: File 'Lib/site-packages/mpl_toolkits/__init__.py' found in multiple
 #   packages: basemap-1.1.0-py27_3.tar.bz2, matplotlib-1.4.3-np110py27_1.tar.bz2
