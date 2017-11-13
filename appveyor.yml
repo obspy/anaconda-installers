@@ -9,20 +9,19 @@ environment:
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
     # See: http://stackoverflow.com/a/13751649/163740
     CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\misc\\appveyor\\run_with_env.cmd"
-    OBSPY_VERSION: "1.0.3"
-    PYTHON_VERSION: "3.6"
+    OBSPY_VERSION: "1.1.0"
 
   matrix:
     # Pre-installed Python versions, which Appveyor may upgrade to
     # a later point release.
     # See: http://www.appveyor.com/docs/installed-software#python
 
-    - PYTHON: "C:\\Miniconda36-x64"
+    - PYTHON: "C:\\Miniconda-x64"
       PYTHON_ARCH: "64"
       CONDA_PLATFORM: "win-64"
       CONDA_PYSUFFIX: "py27"
 
-    - PYTHON: "C:\\Miniconda36"
+    - PYTHON: "C:\\Miniconda"
       PYTHON_ARCH: "32"
       CONDA_PLATFORM: "win-32"
       CONDA_PYSUFFIX: "py27"
@@ -30,12 +29,12 @@ environment:
     - PYTHON: "C:\\Miniconda36-x64"
       PYTHON_ARCH: "64"
       CONDA_PLATFORM: "win-64"
-      CONDA_PYSUFFIX: "py35"
+      CONDA_PYSUFFIX: "py36"
 
     - PYTHON: "C:\\Miniconda36"
       PYTHON_ARCH: "32"
       CONDA_PLATFORM: "win-32"
-      CONDA_PYSUFFIX: "py35"
+      CONDA_PYSUFFIX: "py36"
 
 platform:
   - x64
@@ -59,15 +58,11 @@ install:
   - "python -c \"import sys; print(sys.version)\""
   # Install the build and runtime dependencies of the project.
   - "conda update -q --yes conda"
-  # Install constructor
-  - "conda install -q --yes constructor"
+  # Install constructor, take into account what vc version we target later in the build..
+  - "conda install -q --yes 'constructor>=2.0'"
   # list package versions
   - "conda list"
-  # patch constructor's makensis call to maximum verbosity, see conda/constructor#94
-  - "python patch_makensis_verbosity.py"
   # build installer
-  #- ps: "Copy-Item %OBSPY_VERSION%_%CONDA_PYSUFFIX%\\construct.%CONDA_PLATFORM%.yaml %OBSPY_VERSION%_%CONDA_PYSUFFIX%\\construct.yaml"
-  - "copy %OBSPY_VERSION%_%CONDA_PYSUFFIX%\\construct.%CONDA_PLATFORM%.yaml %OBSPY_VERSION%_%CONDA_PYSUFFIX%\\construct.yaml"
   - "constructor --verbose --platform=%CONDA_PLATFORM% %OBSPY_VERSION%_%CONDA_PYSUFFIX%"
 
 # Not a .NET project, we build ObsPy in the install step instead
