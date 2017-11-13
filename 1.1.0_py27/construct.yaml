@@ -1,10 +1,12 @@
 name: ObsPy
-version: 1.1.0-py35_0
+version: 1.1.0-py27_0
 
+# additional channel on windows for mkl
 channels:
   - http://repo.continuum.io/pkgs/free/
-  - http://repo.continuum.io/pkgs/main/
+  - http://repo.continuum.io/pkgs/main/     [win]
   - https://conda.anaconda.org/conda-forge
+  - https://conda.anaconda.org/obspy        [linux32]
 
 # try to get rid of a problem of zlib not yet installed during
 # unpacking/installation of packages
@@ -19,20 +21,22 @@ install_in_dependency_order: true
 # Checking for duplicate files ...
 # Error: File 'Lib/site-packages/mpl_toolkits/__init__.py' found in multiple
 #   packages: basemap-1.1.0-py27_3.tar.bz2, matplotlib-1.4.3-np110py27_1.tar.bz2
-# XXX ignore_duplicate_files: true
+ignore_duplicate_files: true
 
 specs:
-  - python 3.5*
+  - python 2.7*      [linux32]
+  - python 2.7.14*   [not linux32]
   - conda
   - ipython
   - jupyter
   - obspy 1.1.0
   - basemap
-  - basemap-data-hires
+  - basemap-data-hires   [not linux32]
   - sqlalchemy
   - pyshp
-  - geographiclib
+  - geographiclib        [not linux32]
   - cryptography
+  - mock
 
 license_file: ../anaconda_eula_and_obspy_license_notice.txt
 
